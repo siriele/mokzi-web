@@ -16,6 +16,7 @@ class EventTransition extends Savable {
 const String EVENT = "event";
 const String RAW = "raw";
 const String DEFAULT = RAW;//may not be needed
+
 class Event extends Savable {
 	bool _complete;
 	bool get done => _complete;
