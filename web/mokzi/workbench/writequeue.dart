@@ -33,4 +33,13 @@ class WriteQueue {
 	void _update(Savable s){
 		items[s.type][s.id] = s.deleted;
 	}
+
+	QueueItem pop(){
+		if (queue.isEmpty){
+			return null;
+		}
+		QueueItem item = queue.removeFirst();
+		items[item.type].remove(item.id);
+		return item;
+	}
 }

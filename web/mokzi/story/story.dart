@@ -19,7 +19,6 @@ class Story extends Savable{
 	Map<String, SceneTransition>stransitions;
 	
 	Story(String id, [this.subtype, this.title]):super(id, STORY){
-
 	}
 
 	void loadMeta(){
@@ -49,18 +48,7 @@ class Story extends Savable{
     void deleteScene(Scene object){
 
     }
-    // SceneNode newSceneNode([String stype]){
-    // 	return null;
-    // }
 
-    // SceneNode updateSceneNode( SceneNode object){
-    // 	return null;
-    // }
-
-    // void deleteSceneNode(SceneNode object){
-
-
-    // }
     Character newCharacter([String stype]){
     	return null;
     }

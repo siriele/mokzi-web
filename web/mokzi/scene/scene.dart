@@ -1,6 +1,7 @@
 library scene;
 
 import '../mokzi.dart';
+import '../event/event.dart';
 
 class SceneNode {
 	Map<String, String> children; //key: scene_id, value: transition_id
@@ -40,15 +41,17 @@ const String SCENE = "scene";
 const String SCENE_TRANSITION = "scene_transition";
 
 class Scene extends Savable {
+	String story;
 	String title;
 	String presummary;
 	String postsummary;
 	String subtype;
 	String thumbnail;
 	Map<String,Object>meta;
-	List<EventsRow>queue; 
-	Scene(String id, [this.subtype]): super(id, SCENE){
-		
+	List<EventsRow>queue;
+	List<String> events; 
+	Scene(String id, String this.story,[this.subtype]): super(id, SCENE){
+		events = new List<String>();
 	}
 
 	void loadAssets(){
@@ -63,6 +66,19 @@ class Scene extends Savable {
 
 	}
 
+	void addEvent(Event e){
+		if (!events.contains(e.id)){
+			events.add(e.id);
+			e.addScene(this.id);
+		}
+	}
+
+	void removeEvent(Event e){
+		if (events.contains(e.id)){
+			events.remove(e.id);
+			e.removeScene(this.id);
+		}
+	}
 }
 
 class SceneTransition extends Savable {
